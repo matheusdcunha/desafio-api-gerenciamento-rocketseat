@@ -43,6 +43,9 @@ class UserController {
         role: true,
         createAt: true,
         updatedAt: true
+      },
+      orderBy:{
+        name: "desc"
       }
     });
 

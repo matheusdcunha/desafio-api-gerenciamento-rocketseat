@@ -3,10 +3,12 @@ import { Router } from "express";
 import { UserController } from "@/controllers/users-controller";
 import { ensureAuthenticated } from "@/middlewares/ensure-authenticated";
 import { verifyUserAuthorization } from "@/middlewares/verifyUserAuthorization";
+import { AuthController } from "@/controllers/auth-controller";
 
 
 const userRoutes = Router();
 const userController = new UserController();
+const authController = new AuthController();
 
 
 userRoutes.post("/", 
@@ -25,6 +27,12 @@ userRoutes.delete("/:id",
   ensureAuthenticated, 
   verifyUserAuthorization(["admin"]), 
   userController.delete
+)
+
+userRoutes.patch("/:id",
+  ensureAuthenticated, 
+  verifyUserAuthorization(["admin"]), 
+  authController.update
 )
 
 

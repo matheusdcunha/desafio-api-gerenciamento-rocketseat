@@ -45,7 +45,31 @@ class AuthController {
 
   }
 
-  
+  async update(request: Request, response: Response, next: NextFunction) {
+    const bodySchema = z.object({
+      role: z.enum(["admin", "member"])
+    })
+
+    const paramsSchema = z.object({
+      id: z.coerce.number()
+    })
+
+    const { role } = bodySchema.parse(request.body);
+    const { id } = paramsSchema.parse(request.params);
+
+    await prisma.user.update({
+      where:{
+        id
+      },
+      data:{
+        role
+      }
+    })
+
+    return response.status(200).json()
+
+  }
+
 }
 
 export { AuthController }
