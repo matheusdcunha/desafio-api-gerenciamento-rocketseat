@@ -99,11 +99,13 @@ class UserController {
 
     const user = await prisma.user.findFirst({ where: { id } })
 
-    if(!user){
+    if (!user) {
       throw new AppError("User not exist")
     }
 
-    
+    await prisma.user.delete({ where: { id } })
+
+    return response.status(200).json()
 
   }
 
