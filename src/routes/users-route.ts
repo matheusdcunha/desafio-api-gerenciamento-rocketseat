@@ -9,10 +9,24 @@ const userRoutes = Router();
 const userController = new UserController();
 
 
-userRoutes.post("/", userController.create)
+userRoutes.post("/", 
+  ensureAuthenticated, 
+  verifyUserAuthorization(["admin"]),
+  userController.create)
+
 userRoutes.get("/", userController.index)
-userRoutes.put("/:id", userController.update)
-userRoutes.delete("/:id", ensureAuthenticated, verifyUserAuthorization(["admin"]), userController.delete)
+
+userRoutes.put("/:id", 
+  ensureAuthenticated, 
+  verifyUserAuthorization(["admin"]), 
+  userController.update)
+
+userRoutes.delete("/:id", 
+  ensureAuthenticated, 
+  verifyUserAuthorization(["admin"]), 
+  userController.delete
+)
+
 
 
 export { userRoutes }
