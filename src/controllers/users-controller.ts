@@ -45,7 +45,7 @@ class UserController {
         updatedAt: true
       },
       orderBy:{
-        name: "desc"
+        id: "asc"
       }
     });
 
