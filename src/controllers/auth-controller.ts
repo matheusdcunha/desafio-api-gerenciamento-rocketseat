@@ -41,7 +41,7 @@ class AuthController {
 
     const { password: _, ...userWhitouPassword } = user;
 
-    return response.json({ ...userWhitouPassword, token })
+    return response.status(201).json({ ...userWhitouPassword, token })
 
   }
 
