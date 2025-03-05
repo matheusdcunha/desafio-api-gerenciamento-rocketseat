@@ -11,12 +11,12 @@ const userController = new UserController();
 const authController = new AuthController();
 
 
-userRoutes.post("/", 
-  ensureAuthenticated, 
-  verifyUserAuthorization(["admin"]),
-  userController.create)
+userRoutes.post("/", userController.create)
 
-userRoutes.get("/", userController.index)
+userRoutes.get("/",
+  ensureAuthenticated,
+  verifyUserAuthorization(["admin"]), 
+  userController.index)
 
 userRoutes.put("/:id", 
   ensureAuthenticated, 

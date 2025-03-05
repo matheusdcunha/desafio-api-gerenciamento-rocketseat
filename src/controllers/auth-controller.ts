@@ -31,7 +31,7 @@ class AuthController {
 
     const options: SignOptions = {
       expiresIn,
-      subject: user.name
+      subject: String(user.id)
     }
 
     const token = sign({ role: user.role ?? "member" },

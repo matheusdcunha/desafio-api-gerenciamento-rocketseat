@@ -20,6 +20,8 @@ teamRoutes.put("/:id",
 )
 
 teamRoutes.get("/",
+  ensureAuthenticated,
+  verifyUserAuthorization(["admin"]), 
   teamController.index
 )
 

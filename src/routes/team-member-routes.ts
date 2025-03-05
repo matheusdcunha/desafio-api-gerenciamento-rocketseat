@@ -14,6 +14,8 @@ teamMemberRoutes.post("/",
 )
 
 teamMemberRoutes.get("/", 
+  ensureAuthenticated,
+  verifyUserAuthorization(["admin"]), 
   teamMemberController.list
 )
 
@@ -24,10 +26,14 @@ teamMemberRoutes.put("/:id",
 )
 
 teamMemberRoutes.get("/team/:teamId",
+  ensureAuthenticated,
+  verifyUserAuthorization(["admin", "member"]), 
   teamMemberController.index
 )
 
 teamMemberRoutes.get("/user/:userId",
+  ensureAuthenticated,
+  verifyUserAuthorization(["admin"]), 
   teamMemberController.show
 )
 
