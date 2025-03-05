@@ -4,7 +4,10 @@
   "description": "API de gerenciamento de tarefas",
   "main": "server.ts",
   "scripts": {
-    "dev": "tsx watch --env-file .env src/server.ts"
+    "dev": "tsx watch --env-file .env src/server.ts",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand",
+    "build": "tsup src --out-dir build",
+    "start": "node build/server.js"
   },
   "author": "Matheus da Cunha",
   "license": "ISC",
