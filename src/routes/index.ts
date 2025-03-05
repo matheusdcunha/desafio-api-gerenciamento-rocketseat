@@ -1,3 +1,4 @@
+import { taskHistoriesRoutes } from "./tasks-histories";
 import { teamMemberRoutes } from "./team-member-routes";
 import { userRoutes } from "./users-route";
 import { authRoutes } from "./aut-routes";
@@ -12,6 +13,7 @@ routes.use("/auth", authRoutes)
 routes.use("/teams", teamRoutes)
 routes.use("/teams_members", teamMemberRoutes)
 routes.use("/tasks", taskRoutes)
+routes.use("/task_histories", taskHistoriesRoutes)
 
 
 export { routes } 
